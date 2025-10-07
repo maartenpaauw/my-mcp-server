@@ -1,0 +1,20 @@
+{
+  "name": "my-mcp-server",
+  "version": "1.0.0",
+  "description": "My MCP Server for local development tools.",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "uuid-mcp-server": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["mcp", "uuid"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "uuid": "^11.0.3"
+  }
+}
