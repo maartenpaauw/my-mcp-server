@@ -11,7 +11,7 @@ import clipboardy from "clipboardy";
 
 const server = new Server(
   {
-    name: "uuid-server",
+    name: "my-mcp-server",
     version: "1.0.0",
   },
   {

@@ -4,7 +4,8 @@ A local Model Context Protocol (MCP) server that includes development utilities 
 
 ## Features
 
-- Generate valid UUID v7.
+- **Generate UUID v7**: Generate one or more time-ordered UUID v7 identifiers
+- **Copy to Clipboard**: Copy any text to the system clipboard
 
 ## Installation
 
