@@ -7,6 +7,7 @@ import {
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { v7 as uuidv7 } from "uuid";
+import clipboardy from "clipboardy";
 
 const server = new Server(
   {
@@ -38,6 +39,20 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           },
         },
       },
+      {
+        name: "copy_to_clipboard",
+        description: "Copy text to the system clipboard.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            text: {
+              type: "string",
+              description: "The text to copy to the clipboard",
+            },
+          },
+          required: ["text"],
+        },
+      },
     ],
   };
 });
@@ -57,6 +72,29 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         },
       ],
     };
+  }
+
+  if (request.params.name === "copy_to_clipboard") {
+    const text = request.params.arguments?.text;
+
+    if (!text) {
+      throw new Error("Text parameter is required");
+    }
+
+    try {
+      await clipboardy.write(text);
+
+      return {
+        content: [
+          {
+            type: "text",
+            text: "Text copied to clipboard successfully",
+          },
+        ],
+      };
+    } catch (error) {
+      throw new Error(`Failed to copy to clipboard: ${error.message}`);
+    }
   }
 
   throw new Error(`Unknown tool: ${request.params.name}`);
