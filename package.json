@@ -19,6 +19,6 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",
     "clipboardy": "^5.0.0",
-    "uuid": "^11.0.3"
+    "uuid": "^14.0.0"
   }
 }
